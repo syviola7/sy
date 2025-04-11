@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novel List</title>
+    <link rel="icon" href="syy.webp" type="image/webp">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            padding: 20px;
+            margin: 0;
+            transition: background 0.3s, color 0.3s;
+       
+        }
+        .header {
+            background-color: #000;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 25px;
+            margin-right: 10px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #222;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        .search-container input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 5px;
+            width: 150px;
+        }
+        .search-container img {
+            height: 16px;
+            margin-right: 5px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        h2 {
+            font-size: 18px;
+            font-weight: normal;
+            color: #bbb;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background-color: #222;
+        }
+        img {
+            width: 30px;
+            height: 40px;
+            border-radius: 5px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .title {
+            font-size: 16px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .translator {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .time {
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <a href="neww.html" class="logo"> NovelsEpub </a>
+        <div class="nav-links">
+            <a href="novellist.html">Novel List</a>
+            <a href="#">Genre</a>
+            <a href="#">Forum</a>
+            <a href="#">Resources</a>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" onkeyup="searchNovel()" placeholder="Search...">
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Novel List</h1>
+        <h2>Most Recently Uploaded</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Release</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="novelTable">
+                <tr>
+                    <td class="title"><a href="m1.html" style="color: white; text-decoration: none;"><img src="16.jpg">Having children earns benefit, start competing for dominance in the world by marrying a wife</a></td>
+                    <td>Chapter 173</td>
+                    <td class="time">Ongoing</td>
+                </tr>
+                <tr>
+                    <td class="title"><a href="m2.html" style="color: white; text-decoration: none;"><img src="17.jpg">You Make Money, I'll Spend It: Stepmother's Ultimate Pleasure in the Aristocratic Family</a></td>
+                    <td>Chapter 225</td>
+                    <td class="time">Completed</td>
+                </tr>
+                <tr>
+                    <td class="title"><a href="m3.html" style="color: white; text-decoration: none;"><img src="18.jpg">I'm Very Happy After Marrying the CEO Husband According to the Agreement</a></td>
+                    <td>Chapter 154</td>
+                    <td class="time">Completed</td>
+                </tr>
+                <tr>
+                    <td class="title"><a href="m4.html" style="color: white; text-decoration: none;"><img src="19.jpg">Transmigrated as the Mother of the Abused Male Lead in a Tragic Novel</a></td>
+                    <td>Chapter 75</td>
+                    <td class="time">Completed</td>
+                </tr>
+                <tr>
+                    <td class="title"><a href="m5.html" style="color: white; text-decoration: none;"><img src="20.jpg">Top-tier Auntie in the Entertainment Industry</a></td>
+                    <td>Chapter 136</td>
+                    <td class="time">Completed</td>
+                </tr>
+                <tr>
+                    <td class="title"><a href="m6.html" style="color: white; text-decoration: none;"><img src="21.jpg">I Reincarnated During the Apocalypse and Killed My Enemies </a></td>
+                    <td>Chapter 210</td>
+                    <td class="time">Completed</td>
+                </tr>
+                <tr>
+                    <td class="title"><a href="m7.html" style="color: white; text-decoration: none;"><img src="22.jpg">The Older Brother of My Student is My Secret Crush</a></td>
+                    <td>Chapter 164</td>
+                    <td class="time">Completed</td>
+                </tr>
+                <tr>
+                    <td class="title"><a href="m8.html" style="color: white; text-decoration: none;"><img src="23.jpg">The Villain'S Contracted Lover</a></td>
+                    <td>Chapter 156</td>
+                    <td class="time">Completed</td>
+                </tr>
+                <tr>
+                    <td class="title"><a href="m9.html" style="color: white; text-decoration: none;"><img src="24.jpg">Getting Outsmarted By The CEO</a></td>
+                    <td>Chapter 101</td>
+                    <td class="time">Completed</td>
+                </tr>
+                <tr>
+                    <td class="title"><a href="m10.html" style="color: white; text-decoration: none;"><img src="25.jpg">I Help The Richest Man Spend Money To Prevent Disasters</a></td>
+                    <td>Chapter 510</td>
+                    <td class="time">Completed</td>
+                </tr>
+                <tr>
+                    <td class="title"><a href="6.html" style="color: white; text-decoration: none;"><img src="10.jpg">Spirit Immortal</a></td>
+                    <td>Chapter 698</td>
+                    <td class="time">Completed</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function searchNovel() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let table = document.getElementById("novelTable");
+            let rows = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < rows.length; i++) {
+                let titleCell = rows[i].getElementsByTagName("td")[0];
+                if (titleCell) {
+                    let textValue = titleCell.textContent || titleCell.innerText;
+                    rows[i].style.display = textValue.toLowerCase().includes(input) ? "" : "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
