@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WuxiaWorld Sign Up</title>
+
+  <style>
+
+    /* Reset and base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: white;
+    min-height: 100vh;
+  }
+  
+  /* Header */
+  .header {
+    background-color: #2b2b2b;
+    padding: 15px 20px;
+  }
+  
+  .logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  /* Main container */
+  .login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 0 20px;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  /* Form */
+  .login-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+  }
+  
+  .forgot-password {
+    float: right;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #aaa;
+  }
+  
+  .login-form input {
+    width: 100%;
+    padding: 10px;
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: white;
+  }
+  
+  .login-button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #3b82f6, #2563eb);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+  
+  .login-button:hover {
+    opacity: 0.9;
+  }
+  
+  .signup-text {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+  
+  .signup-text a {
+    color: #3b82f6;
+    text-decoration: none;
+  }
+  
+  /* Divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    margin: 30px 0;
+  }
+  
+  .divider::before,
+  .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #333;
+  }
+  
+  .divider span {
+    margin: 0 10px;
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+  
+  /* Social buttons */
+  .social-buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .google-btn {
+    background-color: white;
+    color: black;
+  }
+  
+  .facebook-btn {
+    background-color: #3b5998;
+    color: white;
+  }
+  
+  .apple-btn {
+    background-color: black;
+    color: white;
+  }
+  
+  .social-buttons img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  </style>
+
+</head>
+<body>
+  <header class="header">
+    <div class="logo">🗡️ WUXIAWORLD</div>
+  </header>
+
+  <main class="login-container">
+    <h1>Sign up</h1>
+
+    <form class="login-form">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Email">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Password">
+
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" id="confirm-password" placeholder="Confirm Password">
+
+      <button type="submit" class="login-button">Sign up</button>
+
+      <p class="signup-text">Already have an account? <a href="index.html">Log in</a></p>
+    </form>
+
+    <div class="divider"><span>Or</span></div>
+
+    <div class="social-buttons">
+      <button class="google-btn"><img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google Icon"> Continue with Google</button>
+      <button class="facebook-btn"><img src="https://www.svgrepo.com/show/475645/facebook-color.svg" alt="Facebook Icon"> Continue with Facebook</button>
+      <button class="apple-btn"><img src="https://www.svgrepo.com/show/303128/apple-logo.svg" alt="Apple Icon"> Continue with Apple</button>
+    </div>
+  </main>
+
+  <script>
+
+    document.getElementById('signup-form').addEventListener('submit', function (e) {
+        e.preventDefault(); // prevent form from submitting
+      
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const confirmPassword = document.getElementById('confirm-password').value.trim();
+        const errorMsg = document.getElementById('error-msg');  
+      
+        errorMsg.textContent = '';
+      
+        if (password.length < 6) {
+          errorMsg.textContent = 'Password must be at least 6 characters.';
+          return;
+        }
+      
+        if (password !== confirmPassword) {
+          errorMsg.textContent = 'Passwords do not match.';
+          return;
+        }
+      
+        // Simulate successful registration
+        alert('Account created successfully!\nEmail: ' + email);
+        document.getElementById('signup-form').reset();
+      });
+      
+
+  </script>
+</body>
+</html>

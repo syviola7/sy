@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enhanced Forum with Navbar</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #000000;
+        color: white;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+        background-color: #1a1a1a;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        flex-wrap: wrap;
+    }
+
+    .navbar .logo {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .navbar .nav-links {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .navbar .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .navbar .nav-links a:hover {
+        text-decoration: underline;
+    }
+
+    .navbar .actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 5px;
+    }
+
+    .navbar input[type="text"] {
+        padding: 5px 10px;
+        border-radius: 4px;
+        border: none;
+        font-size: 14px;
+    }
+
+    .navbar .btn {
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007BFF;
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .navbar .btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Forum Styles */
+    header {
+        background-color: #333;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .forum-container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: rgb(3, 3, 3);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .post-input {
+        width: 95%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        background-color: #f9f9f9;
+        justify-content: space-around;
+        display: flex;
+    }
+
+    .submit-btn {
+        padding: 10px 20px;
+        border: none;
+        background-color: #333;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .submit-btn:hover {
+        background-color: #555;
+    }
+
+    .submit-btn:hover {
+        background-color: #555;
+    }
+
+    .post {
+        background-color: #000000;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .post h4 {
+        margin-top: 0;
+    }
+
+    .main-post {
+        background-color: #202020;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .edit-btn {
+        background-color: #008CBA;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 4px;
+    }
+
+    .edit-btn:hover {
+        background-color: #006f8e;
+    }
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">NovelsEpubs</div>
+    <div class="nav-links">
+        <a href="novellist2.html">Novel List</a>
+        <a href="#">Genre</a>
+        <a href="#">Forum</a>
+        <a href="#">Request Novels</a>
+    </div>
+    
+</nav>
+
+<div class="forum-container">
+    <!-- Main Post Section (Editable by Admin) -->
+    <div class="main-post">
+        <h2>Request Novels</h2>
+        <div id="main-post-content">
+            <p>This is the main post. The admin can edit this post. Currently, this is a placeholder text.</p>
+        
+
+    <h2>Post a Message</h2>
+    <textarea class="post-input" id="post-input" rows="4" placeholder="Write your message here..."></textarea>
+    <button class="submit-btn" id="submit-post">Post Message</button>
+
+    <h2>Messages</h2>
+    <div id="post-list"></div>
+</div>
+
+<script>
+    const submitBtn = document.getElementById('submit-post');
+    const postInput = document.getElementById('post-input');
+    const postList = document.getElementById('post-list');
+
+    // Function to create a new post element
+    function createPost(message, index) {
+        const postDiv = document.createElement('div');
+        postDiv.classList.add('post');
+        postDiv.innerHTML = `
+            <h4>Anonymous</h4>
+            <p>${message}</p>`;
+        postList.appendChild(postDiv);
+    }
+
+    // Function to save posts array to localStorage
+    function savePosts(posts) {
+        localStorage.setItem('forumPosts', JSON.stringify(posts));
+    }
+
+    // Function to load posts from localStorage
+    function loadPosts() {
+        const storedPosts = JSON.parse(localStorage.getItem('forumPosts')) || [];
+        postList.innerHTML = ''; // Clear the post list
+        storedPosts.forEach((msg, index) => {
+            createPost(msg, index);
+        });
+    }
+
+    // Initialize posts array from localStorage
+    let posts = JSON.parse(localStorage.getItem('forumPosts')) || [];
+
+    // Load posts on page load
+    loadPosts();
+
+    // Event listener for submitting a new post
+    submitBtn.addEventListener('click', () => {
+        const message = postInput.value.trim();
+        if (message) {
+            posts.push(message);
+            savePosts(posts);
+            loadPosts();
+            postInput.value = '';
+        }
+    });
+
+    // Allow Enter key to submit the post
+    postInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            submitBtn.click();
+        }
+    });
+</script>
+
+
+</body>
+</html>
