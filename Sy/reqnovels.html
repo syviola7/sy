@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Enhanced Forum with Navbar</title>
+<title>Request Novel</title>
+<link rel="icon" href="syy.webp" type="image/webp" />
 <style>
     body {
         font-family: 'Segoe UI', sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #000000;
-        color: white;
+        background-color: #0b0c10;
+        color: #d1d5db;
     }
 
     /* Navbar Styles */
@@ -20,12 +21,12 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 10px 20px;
+        padding: 15px 20px;
         flex-wrap: wrap;
     }
 
     .navbar .logo {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
     }
 
@@ -45,202 +46,192 @@
         text-decoration: underline;
     }
 
-    .navbar .actions {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-        margin-top: 5px;
-    }
-
-    .navbar input[type="text"] {
-        padding: 5px 10px;
-        border-radius: 4px;
-        border: none;
-        font-size: 14px;
-    }
-
-    .navbar .btn {
-        padding: 6px 12px;
-        border: none;
-        border-radius: 4px;
-        background-color: #007BFF;
-        color: white;
-        cursor: pointer;
-        font-size: 14px;
-    }
-
-    .navbar .btn:hover {
-        background-color: #0056b3;
-    }
-
-    /* Forum Styles */
-    header {
-        background-color: #333;
-        color: white;
-        padding: 10px 0;
-        text-align: center;
-    }
-
-    .forum-container {
-        max-width: 800px;
-        margin: 20px auto;
-        background-color: rgb(3, 3, 3);
-        padding: 20px;
+    /* Request Form Styles */
+    .form-container {
+        max-width: 600px;
+        background-color: #212223;
+        margin: 40px auto;
+        padding: 30px;
         border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 15px rgba(0,0,0,0.4);
     }
 
-    .post-input {
-        width: 95%;
-        padding: 10px;
+    .form-container h2 {
+        margin-top: 0;
+        color: #ffffff;
+        margin-bottom: 15px;
+    }
+
+    .form-container p {
+        font-size: 14px;
+        color: #9ca3af;
         margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 6px;
+        color: #d1d5db;
+        font-weight: 500;
+    }
+
+    .form-group input[type="text"],
+    .form-group textarea,
+    .form-group select {
+        width: 100%;
+        padding: 10px;
         border-radius: 4px;
-        border: 1px solid #ccc;
-        font-size: 16px;
-        background-color: #f9f9f9;
-        justify-content: space-around;
-        display: flex;
+        background-color: #000000;
+        border: 1px solid #707070;
+        color: #d1d5db;
+        font-size: 14px;
+    }
+
+    .form-group select {
+        appearance: none;
+        background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" fill="%23ffffff" viewBox="0 0 4 5"><path d="M2 0L0 2h4L2 0z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 10px;
+    }
+
+    .form-group small {
+        color: #9ca3af;
+        font-size: 12px;
+    }
+
+    .error {
+        color: #ef4444;
+        font-size: 12px;
+        margin-top: 4px;
     }
 
     .submit-btn {
         padding: 10px 20px;
+        background-color: #2563eb;
         border: none;
-        background-color: #333;
+        border-radius: 4px;
         color: white;
         cursor: pointer;
         font-size: 16px;
     }
 
     .submit-btn:hover {
-        background-color: #555;
+        background-color: #1d4ed8;
     }
 
-    .submit-btn:hover {
-        background-color: #555;
+    /* Human verify mock */
+    .human-verify {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
     }
 
-    .post {
-        background-color: #000000;
-        padding: 15px;
-        margin: 10px 0;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    .human-verify input[type="checkbox"] {
+        transform: scale(1.3);
     }
 
-    .post h4 {
-        margin-top: 0;
-    }
-
-    .main-post {
-        background-color: #202020;
-        padding: 20px;
-        margin-bottom: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .edit-btn {
-        background-color: #008CBA;
-        border: none;
-        color: white;
-        padding: 5px 10px;
-        cursor: pointer;
-        font-size: 14px;
-        border-radius: 4px;
-    }
-
-    .edit-btn:hover {
-        background-color: #006f8e;
+    .note {
+        font-size: 12px;
+        color: #9ca3af;
     }
 
 </style>
 </head>
 <body>
-
 <!-- NAVBAR -->
 <nav class="navbar">
-    <div class="logo">NovelsEpubs</div>
+    <div class="logo"><a href="index.html" style="color: white; text-decoration: none;">NovelsEpub</a></div>
     <div class="nav-links">
         <a href="novellist2.html">Novel List</a>
         <a href="#">Genre</a>
         <a href="#">Forum</a>
-        <a href="#">Request Novels</a>
+        <a href="reqnovels.html">Request Novels</a>
     </div>
-    
 </nav>
 
-<div class="forum-container">
-    <!-- Main Post Section (Editable by Admin) -->
-    <div class="main-post">
-        <h2>Request Novels</h2>
-        <div id="main-post-content">
-            <p>This is the main post. The admin can edit this post. Currently, this is a placeholder text.</p>
-        
+<!-- FORM CARD -->
+<div class="form-container">
+    <h2>📚 Request Your Novel Here!</h2>
+    <p>Just drop the title and we’ll do our best to add it for you! 📝</p>
 
-    <h2>Post a Message</h2>
-    <textarea class="post-input" id="post-input" rows="4" placeholder="Write your message here..."></textarea>
-    <button class="submit-btn" id="submit-post">Post Message</button>
+    <form action="https://formspree.io/f/xnndpbvp" method="POST">
+      <div class="form-group">
+          <label for="title">Novel Title <span style="color: #ef4444">*</span></label>
+          <input type="text" id="title" name="Novel Title" placeholder="e.g. Solo Leveling" required>
+      </div>
+  
+      <div class="form-group">
+          <label for="release">Release</label>
+          <select id="release" name="Release">
+              <option value="">Please Select</option>
+              <option value="Ongoing">Ongoing</option>
+              <option value="Completed">Completed</option>
+          </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="text" id="email" placeholder="your-email@gmail.com">
+        <small>Enter email address here, not anywhere else.</small>
+    </div>
+  
+    <div class="form-group">
+        <label>
+            Your message:
+            <textarea name="message"></textarea>
+          </label>
+      </div>
 
-    <h2>Messages</h2>
-    <div id="post-list"></div>
+      <div class="form-group">
+          <label>Please verify that you are human <span style="color: #ef4444">*</span></label>
+          <div class="human-verify">
+              <input type="checkbox" id="humanCheck" name="Human Verify" required>
+              <label for="humanCheck">I am human</label>
+          </div>
+      </div>
+  
+      <button type="submit" class="submit-btn">Submit Request</button>
+  </form>
+  
 </div>
 
 <script>
-    const submitBtn = document.getElementById('submit-post');
-    const postInput = document.getElementById('post-input');
-    const postList = document.getElementById('post-list');
+    const form = document.getElementById('requestForm');
+    const titleInput = document.getElementById('title');
+    const titleError = document.getElementById('titleError');
+    const humanCheck = document.getElementById('humanCheck');
+    const humanError = document.getElementById('humanError');
 
-    // Function to create a new post element
-    function createPost(message, index) {
-        const postDiv = document.createElement('div');
-        postDiv.classList.add('post');
-        postDiv.innerHTML = `
-            <h4>Anonymous</h4>
-            <p>${message}</p>`;
-        postList.appendChild(postDiv);
-    }
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        let hasError = false;
 
-    // Function to save posts array to localStorage
-    function savePosts(posts) {
-        localStorage.setItem('forumPosts', JSON.stringify(posts));
-    }
+        // Reset errors
+        titleError.textContent = '';
+        humanError.textContent = '';
 
-    // Function to load posts from localStorage
-    function loadPosts() {
-        const storedPosts = JSON.parse(localStorage.getItem('forumPosts')) || [];
-        postList.innerHTML = ''; // Clear the post list
-        storedPosts.forEach((msg, index) => {
-            createPost(msg, index);
-        });
-    }
-
-    // Initialize posts array from localStorage
-    let posts = JSON.parse(localStorage.getItem('forumPosts')) || [];
-
-    // Load posts on page load
-    loadPosts();
-
-    // Event listener for submitting a new post
-    submitBtn.addEventListener('click', () => {
-        const message = postInput.value.trim();
-        if (message) {
-            posts.push(message);
-            savePosts(posts);
-            loadPosts();
-            postInput.value = '';
+        if (titleInput.value.trim() === '') {
+            titleError.textContent = 'This field is required.';
+            hasError = true;
         }
-    });
 
-    // Allow Enter key to submit the post
-    postInput.addEventListener('keypress', (event) => {
-        if (event.key === 'Enter' && !event.shiftKey) {
-            event.preventDefault();
-            submitBtn.click();
+        if (!humanCheck.checked) {
+            humanError.textContent = 'This field is required.';
+            hasError = true;
+        }
+
+        if (!hasError) {
+            alert('Novel request submitted successfully!');
+            form.reset();
         }
     });
 </script>
-
 
 </body>
 </html>
