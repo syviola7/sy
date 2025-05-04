@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Announcements | NovelsEpubs</title>
+  <link rel="icon" href="syy.webp" type="image/webp" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000000;
+      color: white;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background-color: #1a1a1a;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      flex-wrap: wrap;
+    }
+
+    .navbar .logo {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .navbar .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .navbar .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Announcement Container */
+    .announcement-container {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: #1c1c1c;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    }
+
+    .announcement-container h2 {
+      margin-top: 0;
+      color: #ffffff;
+      border-bottom: 1px solid #333;
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+    }
+
+    .announcement {
+      background-color: #222;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border-left: 4px solid #ffffff;
+    }
+
+    .announcement h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 18px;
+      color: #ffffff;
+    }
+
+    .announcement p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #ddd;
+    }
+
+    /* Optional Message Section */
+    .message-section {
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid #333;
+    }
+
+    .post-input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+      background-color: #333;
+      color: white;
+    }
+
+    .submit-btn {
+      padding: 8px 16px;
+      border: none;
+      background-color: #111;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    .submit-btn:hover {
+      background-color: #000000;
+    }
+
+    .post {
+      background-color: #111;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border-left: 3px solid #444;
+    }
+
+    .post h4 {
+      margin: 0 0 5px 0;
+      font-size: 14px;
+      color: #ffffff;
+    }
+
+    .post p {
+      margin: 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .edit-btn {
+      background-color: #e74c3c;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 12px;
+      border-radius: 4px;
+      margin-top: 5px;
+    }
+
+    .edit-btn:hover {
+      background-color: #c0392b;
+    }
+
+    .edit-btn {
+  background-color: transparent;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+  padding: 2px 5px;
+  font-size: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background-color: #e74c3c;
+  color: white;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo"><a href="index.html" style="color: white; text-decoration: none;">NovelsEpub</a></div>
+    <div class="nav-links">
+      <a href="novellist2.html">Novel List</a>
+      <a href="#">Genre</a>
+      <a href="reqnovels.html">Request Novels</a>
+      <a href="Announcement.html">Announcement</a>
+
+    </div>
+  </nav>
+
+  <div class="announcement-container">
+    <h2>📢 Announcements</h2>
+
+    <div class="announcement">
+      <h3>Requested Novels Updates ✨</h3>
+      <p>I will be posting the requested novels I have completed here regularly. Stay tuned and happy reading!</p>
+    </div>
+
+    <div class="announcement">
+      <h3>Your Requested Novels — Ready🚀</h3>
+      <p>The Male Leads Are Trapped in My House — ✅ Completed</p>
+      <p>I Was Mistaken as a Monstrous Genius Actor — ✅ Completed</p>
+
+    </div>
+
+    <!-- Optional Message Section -->
+    <div class="message-section">
+      <h2>💬 Leave a message</h2>
+      <textarea class="post-input" id="post-input" rows="3" placeholder="Write your message here..."></textarea>
+      <button class="submit-btn" id="submit-post">Post Message</button>
+
+      <div id="post-list"></div>
+    </div>
+  </div>
+
+  <script>
+    const submitBtn = document.getElementById('submit-post');
+    const postInput = document.getElementById('post-input');
+    const postList = document.getElementById('post-list');
+
+    let posts = JSON.parse(localStorage.getItem('forumPosts')) || [];
+
+    function savePosts(posts) {
+      localStorage.setItem('forumPosts', JSON.stringify(posts));
+    }
+
+    function loadPosts() {
+      postList.innerHTML = '';
+      posts.forEach((msg, index) => {
+        const postDiv = document.createElement('div');
+        postDiv.classList.add('post');
+        postDiv.innerHTML = `
+          <h4>Anonymous</h4>
+          <p>${msg}</p>
+          <button class="edit-btn" onclick="deletePost(${index})">Delete</button>`;
+        postList.appendChild(postDiv);
+      });
+    }
+
+    function deletePost(index) {
+      posts.splice(index, 1);
+      savePosts(posts);
+      loadPosts();
+    }
+
+    submitBtn.addEventListener('click', () => {
+      const message = postInput.value.trim();
+      if (message) {
+        posts.push(message);
+        savePosts(posts);
+        loadPosts();
+        postInput.value = '';
+      }
+    });
+
+    postInput.addEventListener('keypress', (event) => {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        submitBtn.click();
+      }
+    });
+
+    loadPosts();
+  </script>
+
+</body>
+
+</html>
